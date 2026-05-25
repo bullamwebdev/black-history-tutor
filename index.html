@@ -307,37 +307,37 @@ input[type=checkbox]{accent-color:var(--amber)}
       <h2 style="font-size:32px;margin-bottom:8px">Six Historical Eras</h2>
       <p style="color:var(--text-secondary);margin-bottom:32px;font-size:14px">Navigate across the full arc of Black history</p>
       <div style="display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scroll-snap-type:x mandatory">
-        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid var(--amber);cursor:pointer" onclick="filterTopics(1,this)">
+        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid var(--amber);cursor:pointer" onclick="goToExploreEra(1)">
           <div class="ui-text" style="font-size:9px;color:var(--amber);margin-bottom:8px">Era 1</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:6px">Ancient Africa</div>
           <div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px">3000 BCE – 650 CE</div>
           <p style="font-size:12px;color:var(--text-secondary);line-height:1.5">Kingdoms, pharaohs, trade empires and the foundations of civilization.</p>
         </div>
-        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #8B5CF6;cursor:pointer" onclick="filterTopics(2,this)">
+        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #8B5CF6;cursor:pointer" onclick="goToExploreEra(2)">
           <div class="ui-text" style="font-size:9px;color:#8B5CF6;margin-bottom:8px">Era 2</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:6px">Diaspora & Resistance</div>
           <div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px">1500s – 1865</div>
           <p style="font-size:12px;color:var(--text-secondary);line-height:1.5">Slavery, rebellion, liberation and the birth of the African diaspora.</p>
         </div>
-        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #10B981;cursor:pointer" onclick="filterTopics(3,this)">
+        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #10B981;cursor:pointer" onclick="goToExploreEra(3)">
           <div class="ui-text" style="font-size:9px;color:#10B981;margin-bottom:8px">Era 3</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:6px">Renaissance</div>
           <div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px">1865 – 1940s</div>
           <p style="font-size:12px;color:var(--text-secondary);line-height:1.5">Reconstruction, the Great Migration, Harlem Renaissance and Black intellectual life.</p>
         </div>
-        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #F97316;cursor:pointer" onclick="filterTopics(4,this)">
+        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #F97316;cursor:pointer" onclick="goToExploreEra(4)">
           <div class="ui-text" style="font-size:9px;color:#F97316;margin-bottom:8px">Era 4</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:6px">Civil Rights</div>
           <div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px">1950s – 1970s</div>
           <p style="font-size:12px;color:var(--text-secondary);line-height:1.5">Mass movements, Black Power, legal victories and radical visions.</p>
         </div>
-        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #EF4444;cursor:pointer" onclick="filterTopics(5,this)">
+        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #EF4444;cursor:pointer" onclick="goToExploreEra(5)">
           <div class="ui-text" style="font-size:9px;color:#EF4444;margin-bottom:8px">Era 5</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:6px">African Independence</div>
           <div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px">1950s – 2000s</div>
           <p style="font-size:12px;color:var(--text-secondary);line-height:1.5">Decolonisation, Pan-Africanism, liberation movements and new states.</p>
         </div>
-        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #C0186A;cursor:pointer" onclick="filterTopics(6,this)">
+        <div class="card" style="min-width:220px;padding:20px;scroll-snap-align:start;border-left:3px solid #C0186A;cursor:pointer" onclick="goToExploreEra(6)">
           <div class="ui-text" style="font-size:9px;color:#C0186A;margin-bottom:8px">Era 6</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:6px">Contemporary</div>
           <div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px">1980s – Present</div>
@@ -478,7 +478,7 @@ input[type=checkbox]{accent-color:var(--amber)}
     <!-- RIGHT PANEL -->
     <div id="qa-panel">
       <!-- Empty state -->
-      <div id="qa-empty" class="card" style="padding:0;overflow:hidden;min-height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+      <div id="qa-empty" class="card" style="padding:0;overflow:hidden;min-height:500px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative">
         <div class="img-slot" style="position:absolute;inset:0;border-radius:12px;opacity:.25">
           <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(59,130,246,.4) 0%,transparent 50%),radial-gradient(ellipse at 70% 60%,rgba(192,24,106,.35) 0%,transparent 50%);border-radius:12px"></div>
         </div>
@@ -1214,6 +1214,16 @@ function switchTab(name, btn) {
 function buildTopicsMosaic(filterEra) { /* replaced by era accordion */ }
 function filterTopics(era, btn) { /* replaced by era accordion */ }
 
+function goToExploreEra(era) {
+  const exploreBtn = document.querySelector('.nav-tab:nth-child(3)');
+  switchTab('explore', exploreBtn);
+  setTimeout(() => {
+    const pills = document.querySelectorAll('#explore-era-tabs .era-tab-pill');
+    const target = era === 0 ? pills[0] : [...pills].find(p => +p.dataset.era === era);
+    if (target) filterExploreGrid(era, target);
+  }, 80);
+}
+
 function goToLearn(topicId) {
   switchTab('learn', document.querySelector('.nav-tab:nth-child(2)'));
   appState.selectedTopic = topicId;
@@ -1232,8 +1242,6 @@ function filterTopicList(val) { /* replaced by topic drawer */ }
 
 function selectTopic(id, el) {
   appState.selectedTopic = id;
-  document.querySelectorAll('#topic-list [data-id]').forEach(e => e.style.background = '');
-  if (el) el.style.background = 'rgba(232,160,32,.1)';
 }
 
 function selectBloom(level, el) {
@@ -1274,16 +1282,29 @@ function toggleType(type, el) {
 // ============================================================
 function generateQuestionSet() {
   if (!appState.selectedTopic) {
-    const topicListEl = document.getElementById('topic-list');
-    if (topicListEl) topicListEl.style.border = '1px solid var(--magenta)';
-    setTimeout(() => { if (topicListEl) topicListEl.style.border = ''; }, 2000);
+    const pickerBtn = document.getElementById('topic-picker-trigger');
+    if (pickerBtn) {
+      pickerBtn.style.borderColor = 'var(--magenta)';
+      pickerBtn.style.boxShadow = '0 0 0 3px rgba(192,24,106,.2)';
+      setTimeout(() => { pickerBtn.style.borderColor = ''; pickerBtn.style.boxShadow = ''; }, 2000);
+      openTopicDrawer();
+    }
     return;
   }
+  // Filter by bloom + difficulty + type (cascade fallback to ensure we always get results)
   let pool = questions.filter(q =>
     q.topicId === appState.selectedTopic &&
     q.bloom === appState.selectedBloom &&
+    q.difficulty === appState.selectedDifficulty &&
     appState.selectedTypes.includes(q.type)
   );
+  if (!pool.length) {
+    pool = questions.filter(q =>
+      q.topicId === appState.selectedTopic &&
+      q.bloom === appState.selectedBloom &&
+      appState.selectedTypes.includes(q.type)
+    );
+  }
   if (!pool.length) {
     pool = questions.filter(q => q.topicId === appState.selectedTopic && appState.selectedTypes.includes(q.type));
   }
@@ -1542,11 +1563,13 @@ function closeExploreDetail() {
 function initSimulateTab() {
   const sel = document.getElementById('sim-topic');
   if (!sel || sel.options.length > 1) return;
-  Object.values(topics).forEach(t => {
+  Object.values(topics).sort((a,b) => a.era - b.era || a.title.localeCompare(b.title)).forEach(t => {
     const opt = document.createElement('option');
-    opt.value = t.id; opt.textContent = t.title;
+    opt.value = t.id; opt.textContent = `[Era ${t.era}] ${t.title}`;
     sel.appendChild(opt);
   });
+  // Visually pre-select default persona (amara)
+  selectPersona('amara');
 }
 
 function selectPersona(p) {
@@ -1567,7 +1590,11 @@ function selectSimBloom(level, el) {
 
 function runSimulation() {
   const topicId = document.getElementById('sim-topic')?.value;
-  if (!topicId) return;
+  if (!topicId) {
+    const sel = document.getElementById('sim-topic');
+    if (sel) { sel.style.borderColor = 'var(--magenta)'; setTimeout(() => { sel.style.borderColor = ''; }, 2000); }
+    return;
+  }
   const t = topics[topicId];
   const q = questions.find(q => q.topicId === topicId && q.bloom === appState.simBloom) || questions.find(q => q.topicId === topicId);
   if (!q) return;
@@ -1587,7 +1614,9 @@ function renderSimResponses(q, t) {
     { id:'kofi', name:'Kofi', color:'var(--amber)', level:'Intermediate' },
     { id:'zuri', name:'Zuri', color:'var(--gold)', level:'Advanced' }
   ];
-  const show = appState.persona === 'amara' ? [personas[0]] : appState.persona === 'kofi' ? [personas[1]] : [personas[2]];
+  const show = appState.persona === 'kofi' ? [personas[1]] : appState.persona === 'zuri' ? [personas[2]] : [personas[0]];
+  // Reset grid to single column for single-persona view
+  document.getElementById('response-area').style.gridTemplateColumns = '';
   document.getElementById('response-area').innerHTML = show.map(p => `
     <div class="card" style="padding:20px;border-left:3px solid ${p.color}">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
@@ -1621,8 +1650,9 @@ function compareAll() {
     { id:'kofi', name:'Kofi', color:'var(--amber)', level:'Intermediate' },
     { id:'zuri', name:'Zuri', color:'var(--gold)', level:'Advanced' }
   ];
-  document.getElementById('response-area').style.gridTemplateColumns = 'repeat(3,1fr)';
-  document.getElementById('response-area').innerHTML = personas.map(p => `
+  const ra = document.getElementById('response-area');
+  ra.style.gridTemplateColumns = window.innerWidth < 768 ? '1fr' : 'repeat(3,1fr)';
+  ra.innerHTML = personas.map(p => `
     <div class="card" style="padding:16px;border-left:3px solid ${p.color}">
       <div style="font-weight:600;font-size:13px;margin-bottom:8px;color:${p.color}">${p.name} — ${p.level}</div>
       <p style="font-size:12px;line-height:1.6;font-style:italic;color:var(--text-secondary)">"${q.personaResponses?.[p.id] || 'No response.'}"</p>
@@ -1928,10 +1958,6 @@ document.addEventListener('DOMContentLoaded', () => {
   buildParticles();
   initSimulateTab();
   initExploreGrid();
-  // Kick off charts on insights tab
-  document.querySelector('.nav-tab[onclick*="insights"]')?.addEventListener('click', () => {
-    setTimeout(initCharts, 50);
-  });
 });
 </script>
 
