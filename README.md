@@ -12,4 +12,4 @@ Built with vanilla HTML/CSS/JS. No build step required. 250 curated questions ac
 - Afrofuturist × Euphoria cinematic design system
 
 ## Live
-[URL inserted after deploy]
+https://black-history-tutor.vercel.app
