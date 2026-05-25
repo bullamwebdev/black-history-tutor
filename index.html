@@ -468,7 +468,7 @@ input[type=checkbox]{accent-color:var(--amber)}
         <!-- Quantity -->
         <div style="margin-bottom:32px">
           <div style="font-size:11px;color:var(--text-secondary);margin-bottom:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase">Quantity: <span id="qty-display" style="color:var(--amber)">5</span></div>
-          <input type="range" min="3" max="10" value="5" style="width:100%" oninput="document.getElementById('qty-display').textContent=this.value;appState.qty=parseInt(this.value)">
+          <input type="range" min="1" max="5" value="5" style="width:100%" oninput="document.getElementById('qty-display').textContent=this.value;appState.qty=parseInt(this.value)">
         </div>
 
         <button class="btn-amber" style="width:100%;padding:14px 24px;font-size:13px" onclick="generateQuestionSet()">Generate Session</button>
@@ -1291,27 +1291,32 @@ function generateQuestionSet() {
     }
     return;
   }
-  // Filter by bloom + difficulty + type (cascade fallback to ensure we always get results)
+  // Cascade filter — expand until we have enough questions for qty (not just non-empty)
   let pool = questions.filter(q =>
     q.topicId === appState.selectedTopic &&
     q.bloom === appState.selectedBloom &&
     q.difficulty === appState.selectedDifficulty &&
     appState.selectedTypes.includes(q.type)
   );
-  if (!pool.length) {
-    pool = questions.filter(q =>
+  if (pool.length < appState.qty) {
+    const w = questions.filter(q =>
       q.topicId === appState.selectedTopic &&
       q.bloom === appState.selectedBloom &&
       appState.selectedTypes.includes(q.type)
     );
+    if (w.length > pool.length) pool = w;
   }
-  if (!pool.length) {
-    pool = questions.filter(q => q.topicId === appState.selectedTopic && appState.selectedTypes.includes(q.type));
+  if (pool.length < appState.qty) {
+    const w = questions.filter(q => q.topicId === appState.selectedTopic && appState.selectedTypes.includes(q.type));
+    if (w.length > pool.length) pool = w;
   }
-  if (!pool.length) pool = questions.filter(q => q.topicId === appState.selectedTopic);
+  if (pool.length < appState.qty) {
+    pool = questions.filter(q => q.topicId === appState.selectedTopic);
+  }
   const shuffled = pool.sort(() => Math.random() - .5);
   const selected = shuffled.slice(0, appState.qty);
   appState.session = { questions: selected, current: 0, score: 0, answers: [] };
+  document.getElementById('score-display').textContent = 'Score: 0';
   document.getElementById('qa-empty').style.display = 'none';
   document.getElementById('qa-summary').style.display = 'none';
   document.getElementById('qa-active').style.display = 'block';
@@ -1424,8 +1429,11 @@ function showSummary() {
 }
 
 function resetSession() {
+  appState.session = { questions: [], current: 0, score: 0, answers: [] };
   document.getElementById('qa-summary').style.display = 'none';
-  document.getElementById('qa-empty').style.display = '';
+  document.getElementById('qa-active').style.display = 'none';
+  document.getElementById('qa-empty').style.display = 'flex';
+  document.getElementById('score-display').textContent = 'Score: 0';
 }
 
 // ============================================================
